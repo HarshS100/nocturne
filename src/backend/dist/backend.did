@@ -1,0 +1,103 @@
+type _ImmutableObjectStorageRefillResult = 
+ record {
+   success: opt bool;
+   topped_up_amount: opt nat;
+ };
+type _ImmutableObjectStorageRefillInformation = record {
+                                                  proposed_top_up_amount:
+                                                   opt nat;};
+type _ImmutableObjectStorageCreateCertificateResult = 
+ record {
+   blob_hash: text;
+   method: text;
+ };
+type ProductSize = text;
+type ProductId = nat;
+type ProductFilter = 
+ record {
+   category: opt ProductCategory;
+   color: opt ProductColor;
+   maxPrice: opt nat;
+   minPrice: opt nat;
+   size: opt ProductSize;
+ };
+type ProductColor = text;
+type ProductCategory = text;
+type Product = 
+ record {
+   availability: bool;
+   category: ProductCategory;
+   colors: vec ProductColor;
+   createdAt: int;
+   description: text;
+   id: ProductId;
+   images: vec ExternalBlob;
+   isFeatured: bool;
+   material: text;
+   name: text;
+   price: nat;
+   sizes: vec ProductSize;
+ };
+type LookbookEntryId = nat;
+type LookbookEntry = 
+ record {
+   coverImage: ExternalBlob;
+   description: text;
+   id: LookbookEntryId;
+   images: vec ExternalBlob;
+   publishedAt: int;
+   tags: vec text;
+   title: text;
+ };
+type ExternalBlob = blob;
+type CollectionId = nat;
+type Collection = 
+ record {
+   coverImage: ExternalBlob;
+   description: text;
+   id: CollectionId;
+   name: text;
+   productIds: vec ProductId;
+ };
+type CollaborationId = nat;
+type Collaboration = 
+ record {
+   campaign: text;
+   celebrity: text;
+   coverImage: ExternalBlob;
+   description: text;
+   id: CollaborationId;
+   images: vec ExternalBlob;
+   publishedAt: int;
+   quote: text;
+   title: text;
+ };
+service : {
+  _immutableObjectStorageBlobsAreLive: (hashes: vec blob) -> (vec bool) query;
+  _immutableObjectStorageBlobsToDelete: () -> (vec blob) query;
+  _immutableObjectStorageConfirmBlobDeletion: (blobs: vec blob) -> ();
+  _immutableObjectStorageCreateCertificate: (blobHash: text) ->
+   (_ImmutableObjectStorageCreateCertificateResult);
+  _immutableObjectStorageRefillCashier: (refillInformation:
+   opt _ImmutableObjectStorageRefillInformation) ->
+   (_ImmutableObjectStorageRefillResult);
+  _immutableObjectStorageUpdateGatewayPrincipals: () -> ();
+  filterProducts: (filter: ProductFilter) -> (vec Product) query;
+  getCollaborationById: (id: CollaborationId) -> (opt Collaboration) query;
+  getCollaborations: () -> (vec Collaboration) query;
+  getCollectionById: (id: CollectionId) -> (opt Collection) query;
+  getCollections: () -> (vec Collection) query;
+  getFeaturedProducts: () -> (vec Product) query;
+  getLookbookEntries: () -> (vec LookbookEntry) query;
+  getLookbookEntryById: (id: LookbookEntryId) -> (opt LookbookEntry) query;
+  getProductById: (id: ProductId) -> (opt Product) query;
+  getProducts: () -> (vec Product) query;
+  getProductsByCollection: (collectionId: CollectionId) ->
+   (vec Product) query;
+  searchProducts: (searchQuery: text) -> (vec Product) query;
+  submitContact: (name: text, email: text, subject: text, message: text) ->
+   (variant {
+      err: text;
+      ok: text;
+    });
+}

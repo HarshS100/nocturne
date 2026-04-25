@@ -1,0 +1,127 @@
+// Version: 1.0.0
+type CollaborationId__389037094 = Nat;
+type Collaboration__992460146 =
+  {
+    campaign : Text;
+    celebrity : Text;
+    coverImage : ExternalBlob__671167343;
+    description : Text;
+    id : CollaborationId__389037094;
+    images : [ExternalBlob__671167343];
+    publishedAt : Int;
+    quote : Text;
+    title : Text
+  };
+type CollectionId__480057244 = Nat;
+type Collection__872958562 =
+  {
+    coverImage : ExternalBlob__671167343;
+    description : Text;
+    id : CollectionId__480057244;
+    name : Text;
+    productIds : [ProductId__273776574]
+  };
+type ContactMessageId__853703414 = Nat;
+type ContactMessage__937883081 =
+  {
+    createdAt : Int;
+    email : Text;
+    id : ContactMessageId__853703414;
+    message : Text;
+    name : Text;
+    subject : Text
+  };
+type ExternalBlob__671167343 = Blob;
+type LookbookEntryId__691033587 = Nat;
+type LookbookEntry__118404718 =
+  {
+    coverImage : ExternalBlob__671167343;
+    description : Text;
+    id : LookbookEntryId__691033587;
+    images : [ExternalBlob__671167343];
+    publishedAt : Int;
+    tags : [Text];
+    title : Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type ProductCategory__699626341 = Text;
+type ProductColor__14685096 = Text;
+type ProductId__273776574 = Nat;
+type ProductSize__1034410996 = Text;
+type Product__782792486 =
+  {
+    availability : Bool;
+    category : ProductCategory__699626341;
+    colors : [ProductColor__14685096];
+    createdAt : Int;
+    description : Text;
+    id : ProductId__273776574;
+    images : [ExternalBlob__671167343];
+    isFeatured : Bool;
+    material : Text;
+    name : Text;
+    price : Nat;
+    sizes : [ProductSize__1034410996]
+  };
+actor {
+  stable col0 :
+    {
+      coverImage : ExternalBlob__671167343;
+      description : Text;
+      id : CollectionId__480057244;
+      name : Text;
+      productIds : [ProductId__273776574]
+    };
+  stable col1 :
+    {
+      coverImage : ExternalBlob__671167343;
+      description : Text;
+      id : CollectionId__480057244;
+      name : Text;
+      productIds : [ProductId__273776574]
+    };
+  stable col2 :
+    {
+      coverImage : ExternalBlob__671167343;
+      description : Text;
+      id : CollectionId__480057244;
+      name : Text;
+      productIds : [ProductId__273776574]
+    };
+  stable collaborations :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Collaboration__992460146]];
+      var elementIndex : Nat__490723111
+    };
+  stable collections :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Collection__872958562]];
+      var elementIndex : Nat__490723111
+    };
+  stable contactMessages :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactMessage__937883081]];
+      var elementIndex : Nat__490723111
+    };
+  stable lookbookEntries :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?LookbookEntry__118404718]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextCollaborationId : Nat;
+  stable var nextCollectionId : Nat;
+  stable nextContactMessageId : Nat;
+  stable var nextLookbookEntryId : Nat;
+  stable var nextProductId : Nat;
+  stable products :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Product__782792486]];
+      var elementIndex : Nat__490723111
+    }
+};

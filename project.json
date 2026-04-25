@@ -1,0 +1,25 @@
+{
+  "overview": "NOCTURNE is an ultra-premium dark luxury fashion brand website competing at the level of Saint Laurent, Prada, and Gucci. Features a cinematic logo splash screen on first visit, parallax hero, 33+ products across 6 curated sections, and premium micro-animations throughout.",
+  "features": [
+    "Full-screen animated logo splash on first visit with ambient light effects",
+    "Dark luxury design with platinum accents and Instrument Serif editorial typography",
+    "33+ products organized in 6 sections: Menswear, Womenswear, Accessories, Evening Wear, Outerwear, New Arrivals",
+    "Parallax cinematic hero with CSS scroll effect",
+    "Clickable product cards with image zoom and magnetic hover",
+    "Full product detail pages with sticky gallery and size/color selectors",
+    "Shopping cart and Stripe checkout",
+    "Lookbook editorial spreads and celebrity collaborations",
+    "Minimal geometric NOCTURNE logo mark in navigation"
+  ],
+  "category": "e-commerce",
+  "tags": [
+    "luxury",
+    "fashion",
+    "e-commerce",
+    "dark-theme",
+    "editorial",
+    "clothing",
+    "premium"
+  ],
+  "last_updated": "2026-04-25T11:45:40.896Z"
+}
